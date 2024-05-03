@@ -1,7 +1,7 @@
 # Doxyfile 1.9.4
 
-PROJECT_NAME           = <project_name>
-PROJECT_BRIEF          = <project_description>
+PROJECT_NAME           = "gtest-typedfiles"
+PROJECT_BRIEF          = "Generate gtest classes from a config file. Targeted for per-file test cases."
 PROJECT_LOGO           =
 
 OUTPUT_DIRECTORY       = "doc/out"

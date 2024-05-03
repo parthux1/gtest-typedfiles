@@ -1,24 +1,18 @@
-# <project_name>
+# gtest-typedfiles
 
-<project_description>
+Generate gtest classes from a config file. Targeted for per-file test cases.
 
-## Initial setup
+Defining parameterized tests for a set of files results into the structure displayed on the left.
+`gtest-typedfiles` allows test generation as seen in the right structure.
 
-- this project is generated using https://github.com/parthux1/project_preset
-- run `./scripts/init_project.sh` in project root to define common project variables using the following flags
-  - `-p` project name
-  - `-d` project description
-  - see [scripts/init_project.sh](scripts/init_project_preset.sh) for more information
+```
+TestSuite                   TestSuite
+    |- File1                    |- Test1
+    |    |- Test1               |    |- File1
+    |    |- Test2               |    |- ...
+    |    |- ...       VS.       |- Test2
+    |- Fil2                     |    |- File1
+    |    |- Test                |    |- ...
+    |- ...                      |- ...
 
-## Documentation
-
-You can generate a documentation using doxygen.
-This will include files from `src/` and `doc/source/`.  
-Documentation will be written to `doc/out/`. 
-```bash
-# run in project root
-doxygen doc/DoxyFile
-
-# open the documentation
-start doc/out/html/index.html
 ```
