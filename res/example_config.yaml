@@ -1,0 +1,13 @@
+meta:
+  res_path: res/
+  generator_path: res/
+generator:
+  - testsuite: TestSuite1
+    files:
+      - file1.txt:
+        members:
+          - member1:
+              - std::string:
+              - Hello World
+        properties:
+          - property1: 1
