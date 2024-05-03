@@ -2,8 +2,8 @@
 
 Generate GoogleTest classes from a config file. Targeted for per-file test cases.
 
-Defining parameterized tests for a set of files results into the structure displayed on the left.  
-`gtest-typedfiles` allows test generation as seen in the right structure.
+Defining parameterized tests for a set of files results into the structure displayed on the right.  
+`gtest-typedfiles` allows test generation as seen in the left structure.
 
 ```
 TestSuite                   TestSuite
@@ -11,8 +11,13 @@ TestSuite                   TestSuite
     |    |- Test1               |    |- File1
     |    |- Test2               |    |- ...
     |    |- ...       VS.       |- Test2
-    |- Fil2                     |    |- File1
+    |- File2                    |    |- File1
     |    |- Test                |    |- ...
     |- ...                      |- ...
 
 ```
+
+This functionality becomes useful if
+
+- lots of tests may be skipped depending on the currently read file
+- you want to run tests on a subset of files without modifying the code
