@@ -1,8 +1,8 @@
 # gtest-typedfiles
 
-Generate gtest classes from a config file. Targeted for per-file test cases.
+Generate GoogleTest classes from a config file. Targeted for per-file test cases.
 
-Defining parameterized tests for a set of files results into the structure displayed on the left.
+Defining parameterized tests for a set of files results into the structure displayed on the left.  
 `gtest-typedfiles` allows test generation as seen in the right structure.
 
 ```
