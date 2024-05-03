@@ -22,4 +22,4 @@ generator:
   - testsuite: asd
 ```
 
-Example configuration files can be found in [res/](../res/).
+Example configuration files can be found in [res/](../../../res/).
