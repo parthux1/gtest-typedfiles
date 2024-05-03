@@ -1,0 +1,6 @@
+build/
+doc/out/
+
+# Clion
+cmake-build-debug
+.idea
