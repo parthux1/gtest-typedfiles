@@ -8,6 +8,6 @@ generator:
         members:
           - member1:
               - std::string
-              - "Hello World"
+              - "\"Hello World\""
         properties:
           - property1: 1

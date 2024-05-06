@@ -23,7 +23,7 @@ TEST(LoadYAML, ExampleFile)
 
     EXPECT_EQ(member_one.first, "member1");
     EXPECT_EQ(member_one.second.first, "std::string");
-    EXPECT_EQ(member_one.second.second, "Hello World");
+    EXPECT_EQ(member_one.second.second, "\"Hello World\"");
 
     ASSERT_EQ(file_one.properties.size(), 1);
     const auto property_one = *file_one.properties.begin();
