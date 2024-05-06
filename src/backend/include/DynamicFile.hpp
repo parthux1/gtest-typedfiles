@@ -20,8 +20,14 @@ namespace Configuration {
          */
         std::string getClassname() const;
 
+        /*!
+         * \brief Generate static member declarations for the given file. All generated lines are escaped with a \n
+         */
         std::string generateMemberDeclaration() const;
 
+        /*!
+         * \brief Generate static member definitions for the given file. All generated lines are escaped with a \n
+         */
         std::string generateMemberDefinition() const;
 
         /*!
