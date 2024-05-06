@@ -23,5 +23,10 @@ namespace Configuration {
         std::string generateMemberDeclaration() const;
 
         std::string generateMemberDefinition() const;
+
+        /*!
+         * \brief Generates the class definition followed by initializing static members.
+         */
+        std::string generate() const;
     };
 } // namespace Configuration
