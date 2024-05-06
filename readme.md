@@ -1,3 +1,5 @@
+> ! This project is currently unusable
+
 # gtest-typedfiles
 
 Generate GoogleTest classes from a config file. Targeted for per-file test cases.
@@ -17,7 +19,12 @@ TestSuite                   TestSuite
 
 ```
 
-This functionality becomes useful if
+This functionality may be useful if
 
 - lots of tests may be skipped depending on the currently read file
 - you want to run tests on a subset of files without modifying the code
+
+## setting up this project
+
+- install dependencies using the `vcpkg` package manager
+- the top-level `CMakeLists.txt` will build the CLI
