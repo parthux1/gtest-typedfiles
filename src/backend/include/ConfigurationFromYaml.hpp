@@ -56,11 +56,18 @@ namespace YAML {
             rhs.path = node.begin()->first.as<std::string>();
 
             for (const auto& memberNode : node["members"]) {
-                // assert(memberNode.size() == 2);
-                const auto key = memberNode.begin()->first.as<std::string>();
+                // grab member name
                 auto it = memberNode.begin();
-                const auto type = (it++)->first.as<std::string>();
-                const auto val = (it)->first.as<std::string>();
+                const auto key = it->first.as<std::string>();
+
+
+                // grab type and value
+                auto& list_node = it->second;
+                assert(list_node.IsSequence());
+                auto it_list_node = list_node.begin();
+                const auto type = it_list_node++->as<std::string>();
+                const auto val = it_list_node->as<std::string>();
+
                 rhs.members[key] = {type, val};
             }
 

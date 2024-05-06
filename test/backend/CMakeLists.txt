@@ -7,7 +7,8 @@ add_executable(
         yaml_parser.cpp
 )
 
-add_definitions(-DRES_SHARED_BASEPATH="${CMAKE_SOURCE_DIR}/test/res_shared/")
+add_definitions(-DRES_SHARED_BASEPATH="${CMAKE_SOURCE_DIR}/test/res_shared")
+add_definitions(-DPROJ_PATH="${CMAKE_SOURCE_DIR}")
 
 target_include_directories(
         test-gtest-typedfiles-backend
@@ -17,8 +18,8 @@ target_include_directories(
 target_link_libraries(
         test-gtest-typedfiles-backend
         gtest-typedfiles
-        GTest::GTestMain
+        GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(feed-spec-lib-test)
+gtest_discover_tests(test-gtest-typedfiles-backend)

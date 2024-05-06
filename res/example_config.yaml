@@ -7,7 +7,7 @@ generator:
       - file1.txt:
         members:
           - member1:
-              - std::string:
-              - Hello World
+              - std::string
+              - "Hello World"
         properties:
           - property1: 1
