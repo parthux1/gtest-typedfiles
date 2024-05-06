@@ -35,3 +35,10 @@ std::string DynamicFile::generateMemberDefinition() const {
 
     return returnStr;
 }
+std::string DynamicFile::generate() const {
+        std::string returnStr = "class " + getClassname() + " {\npublic:\n";
+        returnStr += generateMemberDeclaration();
+        returnStr += "};\n";
+        returnStr += generateMemberDefinition();
+        return returnStr;
+}
