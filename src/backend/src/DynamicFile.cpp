@@ -5,8 +5,8 @@ using namespace Configuration;
 std::string DynamicFile::getClassname() const {
     std::string filename = path.filename();
     if (path.has_extension()) {
-        const std::size_t length = path.extension().string().length();
-        filename = filename.substr(0, length);
+        const std::size_t ext_length = path.extension().string().length();
+        filename = filename.substr(0, filename.size() - ext_length);
     }
 
     return filename;
@@ -17,7 +17,7 @@ std::string DynamicFile::generateMemberDeclaration() const {
 
     for (const auto& [name, member] : members) {
         const std::string type = member.first;
-        const auto addition = type + " " + name + ";";
+        const auto addition = type + " " + name + ";\n";
         returnStr += addition;
     }
 

@@ -5,6 +5,7 @@ enable_testing()
 add_executable(
         test-gtest-typedfiles-backend
         yaml_parser.cpp
+        DynamicFile.cpp
 )
 
 add_definitions(-DRES_SHARED_BASEPATH="${CMAKE_SOURCE_DIR}/test/res_shared")
