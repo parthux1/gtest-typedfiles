@@ -34,7 +34,7 @@ namespace Configuration {
          * \brief Generate the property declaration for the given file.
          * This is a simple std::unordered_map<std::string, std::string>
          */
-        static std::string generatePropertyDeclaration() ;
+        static std::string generatePropertyDeclaration();
 
         /*!
          * \brief Generate the property definition for the given file.
