@@ -12,9 +12,10 @@ jobs:
     steps:
         - uses: actions/checkout@v4
         - name: run-vcpkg
-          uses: lukka/run-vcpkg@v7.6
-        - name: make
-          run: make
+          uses: lukka/run-vcpkg@v11
+        - uses: lukka/get-cmake@latest 
+        - name: build        
+          uses: lukka/run-cmake@v10
         - name: test
           run: ctest
 
