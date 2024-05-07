@@ -16,7 +16,7 @@ namespace Configuration {
         std::vector<DynamicFile> files;
 
         /*!
-         * \brief Check whether to-be generated classnames are unique.
+         * \brief Check whether to-be generated classnames in stored DynamicFiles are unique.
          */
         [[nodiscard]] bool dynamicClassNamesAreUnique() const;
 
