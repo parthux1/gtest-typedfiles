@@ -17,7 +17,7 @@ std::string DynamicFile::generateMemberDeclaration() const {
 
     for (const auto& [name, member] : members) {
         const std::string type = member.first;
-        const auto addition = type + " " + name + ";\n";
+        const auto addition = "static " + type + " " + name + ";\n";
         returnStr += addition;
     }
 
