@@ -7,16 +7,22 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  setup-build-test:
     runs-on: ubuntu-latest
     steps:
-        - uses: actions/checkout@v4
-        - name: run-vcpkg
-          uses: lukka/run-vcpkg@v11
-        - uses: lukka/get-cmake@latest 
-        - name: build        
-          uses: lukka/run-cmake@v10
-        - name: test
-          run: ctest
-
-
+      - uses: actions/checkout@v4
+      - name: vcpkg
+        run: |
+          sh tooling/init_vcpkg.sh
+      - name: build
+        run: |
+          sh tooling/build.sh
+      - name: test
+        run: |
+          cd build/test/backend
+          ctest --output-junit test-results.xml
+      - name: upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: build/test/backend/test-results.xml
