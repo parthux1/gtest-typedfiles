@@ -1,7 +1,6 @@
 #include <DynamicFile.hpp>
 #include <gtest/gtest.h>
 
-
 TEST(DynamicFile, getClassname) {
     Configuration::DynamicFile file;
 
@@ -18,14 +17,13 @@ TEST(DynamicFile, getClassname) {
 TEST(DynamicFile, generateMemberDeclaration) {
     Configuration::DynamicFile file;
 
-        file.members["member1"] = {"std::string", "val1"};
-        ASSERT_EQ(file.generateMemberDeclaration(), "std::string member1;\n");
+    file.members["member1"] = {"std::string", "val1"};
+    ASSERT_EQ(file.generateMemberDeclaration(), "static std::string member1;\n");
 
-        file.members["member2"] = {"int", "42"};
-        const auto result = file.generateMemberDeclaration();
-        ASSERT_TRUE(result.find("std::string member1;\n") != std::string::npos);
-        ASSERT_TRUE(result.find("int member2;\n") != std::string::npos);
-
+    file.members["member2"] = {"int", "42"};
+    const auto result = file.generateMemberDeclaration();
+    ASSERT_TRUE(result.find("std::string member1;\n") != std::string::npos);
+    ASSERT_TRUE(result.find("int member2;\n") != std::string::npos);
 }
 
 TEST(DynamicFile, generateMemberDefinition) {
