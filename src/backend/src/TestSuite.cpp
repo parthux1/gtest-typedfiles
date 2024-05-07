@@ -14,7 +14,7 @@ bool TestSuite::dynamicClassNamesAreUnique() const {
 }
 
 std::string TestSuite::generateGtestTypedef() const {
-    const static std::string _namespace = "_" + name + "::";
+    const static std::string _namespace = getNamespace() + "::";
 
     std::string result = "typedef ::testing::Types<";
     for (const auto& file : files) {
@@ -26,3 +26,8 @@ std::string TestSuite::generateGtestTypedef() const {
     result += "> " + name + "Types;";
     return result;
 }
+std::string TestSuite::wrapInNamespace(const std::string& content) const
+{
+    return "namespace "+ getNamespace() +" {\n" + content + "}\n";
+}
+std::string TestSuite::getNamespace() const { return "_" + name; }
