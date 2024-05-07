@@ -4,7 +4,7 @@ meta:
 generator:
   - testsuite: TestSuite1
     files:
-      - file1.txt:
+      - file1.cpp:
         members:
           - member1:
               - std::string
