@@ -26,8 +26,73 @@ std::string TestSuite::generateGtestTypedef() const {
     result += "> " + name + "Types;";
     return result;
 }
-std::string TestSuite::wrapInNamespace(const std::string& content) const
-{
-    return "namespace "+ getNamespace() +" {\n" + content + "}\n";
+
+std::string TestSuite::wrapInNamespace(const std::string& content) const {
+    return "namespace " + getNamespace() + " {\n" + content + "}\n";
 }
 std::string TestSuite::getNamespace() const { return "_" + name; }
+
+bool TestSuite::generateOnDisk(const std::filesystem::path& folderPath, bool overwrite, bool fail_on_skip) const {
+
+    bool all_files_generated = true; // will be toggled if file generation is skipped.
+    std::vector<std::filesystem::path> generatedFiles{};
+    auto cleanup = [&generatedFiles]() {
+        spdlog::debug("Cleaning up generated files.");
+        for (const auto& file : generatedFiles) {
+            std::filesystem::remove(file);
+        }
+    };
+
+    // create dir if its missing but register it for deletion if function failes
+    if (!folderPath.has_extension() && !std::filesystem::exists(folderPath)) {
+        spdlog::debug("Creating {}", folderPath.string());
+        std::filesystem::create_directory(folderPath);
+        generatedFiles.push_back(folderPath);
+    }
+    
+    if (!std::filesystem::is_directory(folderPath)) {
+        spdlog::debug("folderPath({}) is not a directory.", folderPath.string());
+        return false;
+    }
+
+    if (!std::filesystem::exists(folderPath)) {
+        spdlog::debug("Path({}) does not exist.", folderPath.string());
+        return false;
+    }
+
+    try {
+        for (const auto& file : files) {
+            const auto content = wrapInNamespace(file.generate());
+            const auto path = folderPath / file.path;
+
+            if (std::filesystem::exists(path) && !overwrite) {
+                spdlog::warn("File {} already exists. Skipping.", path.string());
+                all_files_generated = false;
+                continue;
+            }
+            // register this file for cleanup if this function fails
+            generatedFiles.push_back(path);
+            std::fstream fs(path, std::ios::out | std::ios::trunc);
+            if (!fs.is_open()) {
+                spdlog::error("Could not open file {}", path.string());
+                throw std::runtime_error("Could not open file");
+            }
+
+            fs << content;
+            fs.close();
+            spdlog::debug("Generated file {}", path.string());
+        }
+    }
+    // cleanup generated files
+    catch (const std::exception& e) {
+        cleanup();
+        return false;
+    }
+
+    if (!all_files_generated && fail_on_skip) {
+        cleanup();
+        return false;
+    }
+
+    return true;
+}

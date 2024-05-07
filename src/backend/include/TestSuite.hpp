@@ -1,10 +1,14 @@
 #pragma once
 
+#include <fstream>
 #include <string>
 #include <unordered_set>
 #include <vector>
 // own
 #include "DynamicFile.hpp"
+
+// 3rd party
+#include <spdlog/spdlog.h>
 
 namespace Configuration {
 
@@ -26,6 +30,18 @@ namespace Configuration {
         [[nodiscard]] std::string generateGtestTypedef() const;
 
         [[nodiscard]] std::string wrapInNamespace(const std::string& content) const;
+
+        /*!
+         * \brief generate all stored DynamicFiles and save them on disk
+         * \param folderPath must be a valid path to a folder. The folder is only dynamically created if has no
+         * extension r"*.*"
+         * \param overwrite if true, existing files will be overwritten
+         * \param fail_on_skip if true, the function will fail if a file could not be generated
+         * \note if this function fails it tries to erase all maybe stored files.
+         * \return true if successful
+         */
+        [[nodiscard]] bool generateOnDisk(const std::filesystem::path& folderPath, bool overwrite = false,
+                                          bool fail_on_skip = true) const;
 
     private:
         /*!
