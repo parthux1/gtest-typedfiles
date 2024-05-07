@@ -32,7 +32,8 @@ std::string TestSuite::wrapInNamespace(const std::string& content) const {
 }
 std::string TestSuite::getNamespace() const { return "_" + name; }
 
-bool TestSuite::generateOnDisk(const std::filesystem::path& folderPath, bool overwrite, bool fail_on_skip) const {
+bool TestSuite::generateDynFilesOnDisk(const std::filesystem::path& folderPath, bool overwrite,
+                                       bool fail_on_skip) const {
 
     bool all_files_generated = true; // will be toggled if file generation is skipped.
     std::vector<std::filesystem::path> generatedFiles{};
@@ -49,7 +50,7 @@ bool TestSuite::generateOnDisk(const std::filesystem::path& folderPath, bool ove
         std::filesystem::create_directory(folderPath);
         generatedFiles.push_back(folderPath);
     }
-    
+
     if (!std::filesystem::is_directory(folderPath)) {
         spdlog::debug("folderPath({}) is not a directory.", folderPath.string());
         return false;

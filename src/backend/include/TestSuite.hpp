@@ -40,8 +40,8 @@ namespace Configuration {
          * \note if this function fails it tries to erase all maybe stored files.
          * \return true if successful
          */
-        [[nodiscard]] bool generateOnDisk(const std::filesystem::path& folderPath, bool overwrite = false,
-                                          bool fail_on_skip = true) const;
+        [[nodiscard]] bool generateDynFilesOnDisk(const std::filesystem::path& folderPath, bool overwrite = false,
+                                                  bool fail_on_skip = true) const;
 
     private:
         /*!
