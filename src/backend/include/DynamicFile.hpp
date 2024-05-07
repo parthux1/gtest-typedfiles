@@ -31,6 +31,17 @@ namespace Configuration {
         std::string generateMemberDefinition() const;
 
         /*!
+         * \brief Generate the property declaration for the given file.
+         * This is a simple std::unordered_map<std::string, std::string>
+         */
+        static std::string generatePropertyDeclaration() ;
+
+        /*!
+         * \brief Generate the property definition for the given file.
+         */
+        std::string generatePropertyDefinition() const;
+
+        /*!
          * \brief Generates the class definition followed by initializing static members.
          */
         std::string generate() const;

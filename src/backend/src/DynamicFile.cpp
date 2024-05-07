@@ -37,8 +37,23 @@ std::string DynamicFile::generateMemberDefinition() const {
 }
 std::string DynamicFile::generate() const {
         std::string returnStr = "class " + getClassname() + " {\npublic:\n";
+        returnStr += generatePropertyDeclaration();
         returnStr += generateMemberDeclaration();
         returnStr += "};\n";
+        returnStr += generatePropertyDefinition();
         returnStr += generateMemberDefinition();
         return returnStr;
+}
+std::string DynamicFile::generatePropertyDeclaration() {
+    return "static std::unordered_map<std::string, std::string> properties;\n";
+}
+std::string DynamicFile::generatePropertyDefinition() const {
+    std::string returnStr = "std::unordered_map<std::string, std::string> " + getClassname() + "::properties = {\n";
+
+    for(const auto& [key, value] : properties) {
+        returnStr += "    {\"" + key + "\", \"" + value + "\"},\n";
+    }
+
+    returnStr += "};\n";
+    return returnStr;
 }
