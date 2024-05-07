@@ -26,5 +26,24 @@ This functionality may be useful if
 
 ## setting up this project
 
-- install dependencies using the `vcpkg` package manager
-- the top-level `CMakeLists.txt` will build the CLI
+- clone with submodules
+- setup vcpkg and install dependencies
+
+> this can be done using the following script
+
+```bash
+sh tooling/init_vcpkg.sh
+```
+
+### using clion
+
+- include the newly created vcpkg installation into clion (View > Tool Windows > Vcpkg > + > [root]/tooling/vcpkg)
+- build using UI as normal
+
+### using cli
+
+Build the project using the provided shell script:
+
+```bash
+sh tooling/build.sh
+``` 
