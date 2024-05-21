@@ -2,13 +2,13 @@
 #include <gtest/gtest.h>
 
 TEST(LoadYAML, ExampleFile) {
-    const auto config = Configuration::readFromYaml(std::string(PROJ_PATH) + "/res/example_config.yaml");
+    const auto config = Configuration::read_from_yaml(std::string(PROJ_PATH) + "/res/example_config.yaml");
 
     ASSERT_TRUE(config.has_value()) << "Configuration::readFromYaml failed";
 
     // hardcoded compare
-    ASSERT_EQ(config->testSuites.size(), 1);
-    const auto suite_one = config->testSuites.at(0);
+    ASSERT_EQ(config->testsuites.size(), 1);
+    const auto suite_one = config->testsuites.at(0);
     EXPECT_EQ(suite_one.name, "TestSuite1");
 
     ASSERT_EQ(suite_one.files.size(), 1);
