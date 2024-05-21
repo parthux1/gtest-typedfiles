@@ -10,8 +10,8 @@ namespace Configuration {
      */
     class ConfigObject {
     public:
-        std::filesystem::path resourcePath;
-        std::filesystem::path generatorPath;
-        std::vector<TestSuite> testSuites;
+        std::filesystem::path resource_path;
+        std::filesystem::path generator_path;
+        std::vector<TestSuite> testsuites;
     };
 } // namespace Configuration

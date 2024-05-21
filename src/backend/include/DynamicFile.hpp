@@ -18,33 +18,33 @@ namespace Configuration {
         /*!
          * \brief Generate a classname for the given file.
          */
-        std::string getClassname() const;
+        std::string get_classname() const;
 
         /*!
          * \brief Generate the includes for the given file. All generated lines are escaped with a \n
          */
-        std::string getIncludes() const;
+        std::string get_includes() const;
 
         /*!
          * \brief Generate static member declarations for the given file. All generated lines are escaped with a \n
          */
-        std::string generateMemberDeclaration() const;
+        std::string generate_member_declaration() const;
 
         /*!
          * \brief Generate static member definitions for the given file. All generated lines are escaped with a \n
          */
-        std::string generateMemberDefinition() const;
+        std::string generate_member_definition() const;
 
         /*!
          * \brief Generate the property declaration for the given file.
          * This is a simple std::unordered_map<std::string, std::string>
          */
-        static std::string generatePropertyDeclaration();
+        static std::string generate_property_declaration();
 
         /*!
          * \brief Generate the property definition for the given file.
          */
-        std::string generatePropertyDefinition() const;
+        std::string generate_property_definition() const;
 
         /*!
          * \brief Generates the class definition followed by initializing static members.

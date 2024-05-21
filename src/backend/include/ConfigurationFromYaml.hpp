@@ -60,7 +60,6 @@ namespace YAML {
                 auto it = memberNode.begin();
                 const auto key = it->first.as<std::string>();
 
-
                 // grab type and value
                 auto& list_node = it->second;
                 assert(list_node.IsSequence());
@@ -87,5 +86,5 @@ namespace Configuration {
     /*!
      * \brief Try to build a configuration object from a yaml.
      */
-    [[nodiscard]] std::optional<ConfigObject> readFromYaml(const std::filesystem::path& path);
+    [[nodiscard]] std::optional<ConfigObject> read_from_yaml(const std::filesystem::path& path);
 } // namespace Configuration

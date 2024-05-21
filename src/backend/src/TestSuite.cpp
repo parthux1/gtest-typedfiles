@@ -7,7 +7,7 @@ bool TestSuite::dynamic_classnames_are_unique() const {
     classNames.reserve(files.size());
 
     for (const auto& file : files) {
-        classNames.insert(file.getClassname());
+        classNames.insert(file.get_classname());
     }
 
     return classNames.size() == files.size();
@@ -18,7 +18,7 @@ std::string TestSuite::generate_gtest_typedef() const {
 
     std::string result = "typedef ::testing::Types<";
     for (const auto& file : files) {
-        result += _namespace + file.getClassname() + ", ";
+        result += _namespace + file.get_classname() + ", ";
     }
     // rm last ", "
     result.pop_back();
@@ -56,7 +56,7 @@ TestSuite::generate_dynfiles_on_disk(const std::filesystem::path& folder_path, b
     for (const auto& file : files) {
 
         // we explicitly generate includes outside the namespace
-        const auto content = file.getIncludes() + wrap_in_namespace(file.generate(false));
+        const auto content = file.get_includes() + wrap_in_namespace(file.generate(false));
         const auto path = folder_path / file.path;
 
         const auto file_exists = std::filesystem::exists(path);

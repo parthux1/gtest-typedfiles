@@ -7,10 +7,10 @@ constexpr auto TARGET_PATH = "./generated";
 
 int main() {
     spdlog::set_level(spdlog::level::debug);
-    const auto config = Configuration::readFromYaml("../../../res/example_config.yaml");
+    const auto config = Configuration::read_from_yaml("../../../res/example_config.yaml");
     spdlog::info("Config: {}", config.has_value() ? "valid" : "invalid");
 
-    auto testSuite = config->testSuites[0];
+    auto testSuite = config->testsuites[0];
     const auto res_dyn = testSuite.generate_dynfiles_on_disk(TARGET_PATH, true, true);
     spdlog::info("Dyn-Generation: {}", res_dyn.has_value() ? "successful" : "failed");
 
