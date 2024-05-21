@@ -21,6 +21,11 @@ namespace Configuration {
         std::string getClassname() const;
 
         /*!
+         * \brief Generate the includes for the given file. All generated lines are escaped with a \n
+         */
+        std::string getIncludes() const;
+
+        /*!
          * \brief Generate static member declarations for the given file. All generated lines are escaped with a \n
          */
         std::string generateMemberDeclaration() const;
@@ -43,7 +48,8 @@ namespace Configuration {
 
         /*!
          * \brief Generates the class definition followed by initializing static members.
+         * \param add_includes if true, includes are added to the generated string.
          */
-        std::string generate() const;
+        std::string generate(bool add_includes = true) const;
     };
 } // namespace Configuration
