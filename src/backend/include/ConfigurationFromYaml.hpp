@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <optional>
 // own
-#include "Configuration.hpp"
+#include "ConfigObject.hpp"
 
 // 3rd party
 #include <spdlog/spdlog.h>

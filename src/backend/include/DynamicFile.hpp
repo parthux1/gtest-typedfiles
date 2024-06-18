@@ -4,6 +4,9 @@
 #include <string>
 #include <unordered_map>
 
+// ours
+#include "ConfigurationCommon.hpp"
+
 namespace Configuration {
     class DynamicFile {
     public:

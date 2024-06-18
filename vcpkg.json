@@ -1,19 +1,18 @@
 {
-  "name": "gtest-typedfiles",
-  "version-string": "1.0.0",
-  "dependencies": [
-    {
-      "name": "yaml-cpp",
-      "version>=": "0.8.0#1"
-    },
-    {
-      "name": "spdlog",
-      "version>=": "1.14.1"
-    },
-    {
-      "name": "gtest",
-      "version>=": "1.14.0#1"
-    }
-  ],
-  "builtin-baseline": "6f98981f736c6482a3d80db6ba35c6ff64482cfb"
+  "name" : "gtest-typedfiles",
+  "version-string" : "1.0.0",
+  "dependencies" : [ {
+    "name" : "yaml-cpp",
+    "version>=" : "0.8.0#1"
+  }, {
+    "name" : "spdlog",
+    "version>=" : "1.14.1"
+  }, {
+    "name" : "gtest",
+    "version>=" : "1.14.0#1"
+  }, {
+    "name" : "boost-algorithm",
+    "version>=" : "1.84.0#1"
+  } ],
+  "builtin-baseline" : "6f98981f736c6482a3d80db6ba35c6ff64482cfb"
 }

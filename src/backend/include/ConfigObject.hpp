@@ -14,4 +14,5 @@ namespace Configuration {
         std::filesystem::path generator_path;
         std::vector<TestSuite> testsuites;
     };
+
 } // namespace Configuration

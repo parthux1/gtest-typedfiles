@@ -4,6 +4,7 @@ enable_testing()
 
 add_executable(
         test-gtest-typedfiles-backend
+        Configuration.cpp
         yaml_parser.cpp
         DynamicFile.cpp
 )

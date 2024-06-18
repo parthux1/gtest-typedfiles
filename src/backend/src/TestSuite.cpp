@@ -28,7 +28,7 @@ std::string TestSuite::generate_gtest_typedef() const {
 }
 
 std::string TestSuite::wrap_in_namespace(const std::string& content) const {
-    return "namespace " + get_namespace() + " {\n" + content + "}\n";
+    return "namespace " + get_namespace() + " {\n" + tab_lines(content, 1) + "\n} //" + get_namespace() + "\n";
 }
 
 std::string TestSuite::get_namespace() const { return "_" + name; }

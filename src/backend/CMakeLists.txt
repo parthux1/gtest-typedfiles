@@ -1,12 +1,14 @@
 set(HEADERS
-        include/Configuration.hpp
+        include/ConfigurationCommon.hpp
+        include/ConfigObject.hpp
         include/ConfigurationFromYaml.hpp
         include/TestSuite.hpp
         include/DynamicFile.hpp
 )
 
 set(SRC
-        src/Configuration.cpp
+        src/ConfigurationCommon.cpp
+        src/ConfigObject.cpp
         src/DynamicFile.cpp
         src/TestSuite.cpp
         src/ConfigurationFromYaml.cpp

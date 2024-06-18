@@ -26,6 +26,7 @@ std::string DynamicFile::generate_member_declaration() const {
 
     return returnStr;
 }
+
 std::string DynamicFile::generate_member_definition() const {
     std::string returnStr{};
 
@@ -35,9 +36,10 @@ std::string DynamicFile::generate_member_definition() const {
         const auto addition = type + " " + get_classname() + "::" + name + " = " + value + ";\n";
         returnStr += addition;
     }
-
+    // ends with \n
     return returnStr;
 }
+
 std::string DynamicFile::generate(bool add_includes) const {
     std::string returnStr{};
     if (add_includes) {
@@ -46,25 +48,42 @@ std::string DynamicFile::generate(bool add_includes) const {
 
     returnStr += "class " + get_classname() + " {\npublic:\n";
 
-    returnStr += generate_property_declaration();
-    returnStr += generate_member_declaration();
-    returnStr += "};\n";
+    returnStr += tab_lines(generate_property_declaration(), 1);
+    returnStr += "\n";
+    returnStr += tab_lines(generate_member_declaration(), 1);
+    returnStr += "\n";
+    returnStr += "};\n\n";
 
     returnStr += generate_property_definition();
     returnStr += generate_member_definition();
 
     return returnStr;
 }
+
 std::string DynamicFile::generate_property_declaration() {
-    return "static std::unordered_map<std::string, std::string> properties;\n";
+    return "static std::unordered_map<std::string, std::string> properties;";
 }
+
 std::string DynamicFile::generate_property_definition() const {
     std::string returnStr = "std::unordered_map<std::string, std::string> " + get_classname() + "::properties = {\n";
 
+    const auto prop_size = properties.size();
+    size_t prop_current = 0;
     for (const auto& [key, value] : properties) {
-        returnStr += "    {\"" + key + "\", \"" + value + "\"},\n";
+        auto temp = "{\"" + key + "\", \"" + value + "\"}";
+
+        // comma for next line
+        if (prop_current != prop_size - 1) {
+            temp += ",";
+        }
+        if (prop_current != 0) {
+            temp = "\n";
+        }
+
+        prop_current++;
+        returnStr += tab_lines(temp, 1);
     }
 
-    returnStr += "};\n";
+    returnStr += "\n};\n";
     return returnStr;
 }
