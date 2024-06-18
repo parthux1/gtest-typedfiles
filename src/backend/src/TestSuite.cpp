@@ -114,7 +114,7 @@ bool TestSuite::generate_includefile_on_disk(const std::filesystem::path& folder
 
 bool TestSuite::create_folder_if_no_extension_and_missing(const std::filesystem::path& folder_path) {
     if (folder_path.has_extension() || std::filesystem::exists(folder_path)) {
-        spdlog::debug("Not generating '{}' because Extension: {} || Exists: {}", folder_path.string(),
+        spdlog::debug("Not generating folder '{}' because Extension: {} || Exists: {}", folder_path.string(),
                       folder_path.has_extension(), std::filesystem::exists(folder_path));
         return false;
     }
